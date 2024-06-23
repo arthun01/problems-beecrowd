@@ -1,20 +1,35 @@
 #include <stdio.h>
 
 int main(){
-	int h1, m1, h2, m2, horas, minutos, duracao;
+	int start[2], end[2], s, e, rh, rm;
 
-	scanf("%d %d %d %d", &h1, &m1, &h2, &m2);
-
-	if ((h1 == m1) && (m1 == h2) && (h2 == m2)){
-		horas = 24;
- 		minutos = 0;
-	}else{
-		minutos = ((h2 * 60) + m2) - ((h1 * 60) + m1);
-		horas = duracao / 60;
-		minutos %= 60;
+	for(int c = 0; c < 2; c++){
+		scanf("%d", &start[c]);
 	}
 
-	printf("O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n", horas, minutos);
+	for(int x = 0; x < 2; x++){
+		scanf("%d", &end[x]);
+	}
+
+	if((start[0] == end[0]) && start[1] == end[1]){
+		printf("O JOGO DUROU 24 HORA(S) E 0 MINUTO(S)\n");
+	}else{
+		s = (start[0] * 60) + start[1];
+		e = (end[0] * 60) + end[1];
+
+		rh = e - s;
+		rm = e - s;
+
+		rh = rh / 60;
+
+		if (rm <= 60){
+			rm = rm;
+		}else{
+			rm = rm % 60;
+		}
+
+		printf("O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n", rh, rm);
+	}
 
 	return 0;
 }
